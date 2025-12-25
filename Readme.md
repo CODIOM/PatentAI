@@ -53,10 +53,10 @@ The traditional patent research process is often long, complex, and prohibitivel
 * **Bilingual Support:** bridging a critical gap by providing native support for **Turkish** patent data alongside global English databases.
 * **Smart Consultation:** Leveraging LLMs (Llama 3/GPT-4) to evaluate innovation potential and provide strategic, actionable recommendations.
 
-## 👥 Ekip
+##  Team
 
 
-| Rol | Üye | LinkedIn |
+| Role | Member | LinkedIn |
 |------|--------|-----------|
 | **Deep Learning & Team Lead** | Berat Erol Çelik | [![LinkedIn](https://img.shields.io/badge/-Berat_Erol_Çelik-0077B5?style=flat-square&logo=LinkedIn&logoColor=white)](https://www.linkedin.com/in/berat-erol-%C3%A7elik-513915258/) |
 | **Backend & API** | Emre Aldemir | [![LinkedIn](https://img.shields.io/badge/-Emre_Aldemir-0077B5?style=flat-square&logo=LinkedIn&logoColor=white)](https://www.linkedin.com/in/emre-aldemir-1b2301293/) |
@@ -66,71 +66,70 @@ The traditional patent research process is often long, complex, and prohibitivel
 
 ---
 
-## 🎯 Problem
-Patent süreçleri uzun, karmaşık ve maliyetlidir. Girişimciler, araştırmacılar veya Ar-Ge ekipleri, fikirlerinin daha önce patentlenip patentlenmediğini, hangi alanlarda yoğun başvuru olduğunu veya hangi kısmının gerçekten yenilik taşıdığını anlamakta zorlanıyor.  
-Mevcut sistemler:  
-- Yalnızca İngilizce çalışıyor, Türkçe patent verilerini kapsamaz.  
-- Sadece arama yapan araçlar seviyesinde kalıyor, kullanıcıya akıllı öneriler sunmuyor.  
-- Patent sonrası benzer başvuruları takip etmiyor.  
+##  Problem
+Patent processes are lengthy, complex, and costly. Entrepreneurs, researchers, or R&D teams struggle to understand whether their ideas have been patented before, which areas have high application volumes, or which parts truly represent innovation.  
+Current systems:  
+- Only work in English and do not cover Turkish patent data.  
+- Remain at the level of search tools and do not provide users with smart suggestions.  
+- Do not track similar applications after the patent is granted.  
 
 ---
 
-## 💡 Çözüm
+##  Solution
 
 PatentAI
-- Fikri veya patent dokümanını analiz eder
-- Benzer patentleri bulur ve farklarını özetler
-- Yenilik potansiyelini değerlendirir
-- Girişimciler, Ar-Ge Ekipleri ve araştırmacıları için akıllı öneriler sunar
-
+- Analyzes intellectual property or patent documents
+- Finds similar patents and summarizes their differences
+- Evaluates innovation potential
+- Provides smart recommendations for entrepreneurs, R&D teams, and researchers
 ---
 
-## 🚀 Temel Özellikler
+##  Key Features
 
-| Özellik | Açıklama | Durum |
+| Feature | Description | Status |
 |---------|-------------|---------|
-| 🔍 **Patent Fark Analizi** | Fikirleri mevcut patentlerle karşılaştırır | ❌ Planlama |
-| 🧠 **LLM Tabanlı Anlamsal Analiz** | Llama 3/GPT-4 ile akıllı yorumlama | ❌ Planlama |
-| 💡 **Patentlenebilirlik Değerlendirmesi** | Yenilik potansiyelini değerlendirir | ❌ Planlama |
-| 🌐 **Türkçe Patent Desteği** | Türkçe patent analizi yapan ilk sistem | ❌ Planlama |
-| 📊 **Yoğunluk & Boşluk Analizi** | Kalabalık ve boş teknoloji alanlarını belirler | ❌ Planlama |
-| 🔔 **Patent İzleme** | Patent sonrası benzer başvuruları takip eder | ❌ Planlama |
-| 🎯 **Stratejik Öneriler** | Teknik ve pazar odaklı tavsiyeler | ❌ Planlama |
-| 👥 **Çok Kullanıcılı Raporlar** | Farklı kullanıcı tipleri için özel raporlar | ❌ Planlama |
+|  **Patent Gap Analysis** | Compares ideas with existing patents | ✅ Completed |
+|  **LLM-Based Semantic Analysis** | Intelligent interpretation with Llama 3/GPT-4 | ✅ Completed |
+|  **Patentability Assessment** | Evaluates innovation potential | ✅ Completed |
+|  **Turkish Patent Support** | First system to perform Turkish patent analysis | ✅ Completed |
+|  **Density & Gap Analysis** | Identifies crowded and empty technology areas | ✅ Completed |
+|  **Patent Monitoring** | Tracks similar applications after patenting | ✅ Completed |
+|  **Strategic Recommendations** | Technical and market-oriented advice | ✅ Completed |
+|  **Multi-User Reports** | Customized reports for different user types | ✅ Completed |
 
 
     
 ---
 
-## 🔧 Teknoloji Yığını
+##  Tech Stack
 
 ### Backend & API
 <img src="https://img.shields.io/badge/Python-3776AB.svg?style=for-the-badge&logo=Python&logoColor=white" alt="Python">
 <img src="https://img.shields.io/badge/FastAPI-009688.svg?style=for-the-badge&logo=FastAPI&logoColor=white" alt="FastAPI">
 <img src="https://img.shields.io/badge/Flask-000000.svg?style=for-the-badge&logo=Flask&logoColor=white" alt="Flask">
 
-### Yapay Zeka & Makine Öğrenmesi
+### Artificial Intelligence & Machine Learning
 <img src="https://img.shields.io/badge/SentenceTransformers-FF6F00.svg?style=for-the-badge&logo=HuggingFace&logoColor=white" alt="SentenceTransformers">
 <img src="https://img.shields.io/badge/FAISS-00B0FF.svg?style=for-the-badge&logo=Facebook&logoColor=white" alt="FAISS">
 <img src="https://img.shields.io/badge/scikit--learn-F7931E.svg?style=for-the-badge&logo=scikit-learn&logoColor=white" alt="scikit-learn">
 <img src="https://img.shields.io/badge/Llama-3B82F6.svg?style=for-the-badge&logo=Meta&logoColor=white" alt="Llama">
 
-### Önyüz & Kullanıcı Arayüzü
+### Front End & User Interface
 <img src="https://img.shields.io/badge/Streamlit-FF4B4B.svg?style=for-the-badge&logo=Streamlit&logoColor=white" alt="Streamlit">
 <img src="https://img.shields.io/badge/HTML5-E34F26.svg?style=for-the-badge&logo=HTML5&logoColor=white" alt="HTML5">
 <img src="https://img.shields.io/badge/CSS3-1572B6.svg?style=for-the-badge&logo=CSS3&logoColor=white" alt="CSS3">
 
-### Veritabanı & Dağıtım
+### Database & Distribution
 <img src="https://img.shields.io/badge/PostgreSQL-4169E1.svg?style=for-the-badge&logo=PostgreSQL&logoColor=white" alt="PostgreSQL">
 <img src="https://img.shields.io/badge/Docker-2496ED.svg?style=for-the-badge&logo=Docker&logoColor=white" alt="Docker">
 <img src="https://img.shields.io/badge/Render-46E3B7.svg?style=for-the-badge&logo=Render&logoColor=white" alt="Render">
 
 ---
 
-## 🏗️ Sistem Mimarisi
+## System Architecture
 
 
-Patent AI, yapay zekâ destekli bir “patent fark analizi ve yenilik danışmanı”dır. Sistem, girilen fikri veya patent dokümanını analiz eder, mevcut patentlerle kıyaslar, farklarını bulur ve yenilik potansiyelini değerlendirir.
+**Patent AI** is an AI-powered "patent gap analysis and innovation consultant." The system analyzes an inputted idea or patent document, compares it with existing patents, identifies differences, and evaluates its innovation potential.
 
 ```sh
 └── /
@@ -157,55 +156,55 @@ Patent AI, yapay zekâ destekli bir “patent fark analizi ve yenilik danışman
 ```
 
 ### API Uç Noktaları
-| Uç Nokta | Metot | Açıklama |
+| Endpoint | Method | Description |
 |----------|--------|-------------|
-| `/api/analyze` | POST | Patent fikrini analiz eder ve benzerlikleri bulur |
-| `/api/similar` | GET | Benzer patentleri bulur |
-| `/api/report` | POST | Analiz raporu oluşturur |
-| `/api/health` | GET | Sistem sağlık kontrolü |
+| `/api/analyze` | POST | Analyzes the patent idea and finds similarities |
+| `/api/similar` | GET | Finds similar patents |
+| `/api/report` | POST | Generates an analysis report |
+| `/api/health` | GET | System health check |
 
-### Veri Akışı
-1. **Girdi**: Kullanıcı fikir/patent metni gönderir
-2. **İşleme**: Metin SentenceTransformers ile vektörlere dönüştürülür
-3. **Arama**: FAISS benzerlik araması ile patent veritabanında tarama
-4. **Analiz**: LLM farkları ve yenilik potansiyelini işler
-5. **Çıktı**: Öneriler içeren yapılandırılmış rapor
+### Data Flow
+1. **Input**: User submits an idea or patent text.
+2. **Processing**: Text is converted into vectors using SentenceTransformers.
+3. **Search**: Scans the patent database using FAISS similarity search.
+4. **Analysis**: LLM processes differences and innovation potential.
+5. **Output**: A structured report containing recommendations.
 
 ---
 
-## 📊 Veri Kaynakları
+## Data Sources
 
-PatentAI, hem Türkçe hem İngilizce patent verileriyle çalışır.  
-İlk MVP sürümünde kullanılacak kaynaklar:
+PatentAI works with both Turkish and English patent data. 
+Resources used in the initial MVP version:
 
-- **Google Patent İngilizce ve Türkçe Patentler** - Ana veri kaynağı
-- **EPO (European Patent Office)** - Ana veri kaynağı
+- **Google Patents (English and Turkish Patents)** - Main data source
+- **EPO (European Patent Office)** - Main data source
 
-## 🗓️ Yol Haritası
--  **`Task 1`**: Analiz & Planlama
--  **`Task 2`**: Veri Toplama & Modelleme Başlangıcı
--  **`Task 3`**: Flask API & Backend Geliştirme
--  **`Task 4`**: Arayüz + Raporlama ( Python tabanlı)
--  **`Task 5`**: Test,Demo & Sunum
+## Roadmap
+-  **`Task 1`**: Analysis & Planning
+-  **`Task 2`**: Data Collection & Modeling Initialization
+-  **`Task 3`**: Flask API & Backend Development
+-  **`Task 4`**: Interface + Reporting (Python-based)
+-  **`Task 5`**: Testing, Demo & Presentation
 
 
-**Teknolojiler:**  
+**Technologies:**  
 - Python 3.x  
 - Flask / FastAPI  
 - SentenceTransformers (`all-MiniLM-L6-v2`)  
-- FAISS veya cosine similarity  
-- PostgreSQL (veri kayıtları)  
-- Opsiyonel: Elasticsearch (hızlı metin araması için)
+- FAISS or cosine similarity
+- PostgreSQL (data records)
+- Optional: Elasticsearch (for fast text search)
 
 ---
 
-### Example Data Flow
+### Example Data Flow Scenario
 
-1. Kullanıcı fikir veya patent özetini girer.  
-2. Backend, metni embedding’e çevirir (`SentenceTransformers`).  
-3. Benzer patentleri veritabanında arar (`cosine similarity` / `faiss`).  
-4. LLM (ör. Llama 3 veya GPT-4) farkları ve yenilik yönlerini yorumlar.  
-5. Sonuçlar JSON veya HTML raporu olarak frontend’e döner.
+1. The user enters an idea or a patent summary.
+2. The backend converts the text into embeddings (SentenceTransformers).
+3. The system searches for similar patents in the database (cosine similarity / faiss)
+4. An LLM (e.g., Llama 3 or GPT-4) interprets the differences and innovation aspects.
+5. Results return to the frontend as a JSON or HTML report.
 
 ---
 
@@ -219,6 +218,7 @@ PatentAI, hem Türkçe hem İngilizce patent verileriyle çalışır.
 
 
 ---
+
 
 
 
