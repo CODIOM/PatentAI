@@ -1,29 +1,48 @@
 # app/main.py
 
+# Import the FastAPI framework and 'Depends' for dependency injection (managing shared resources like DB).
 from fastapi import FastAPI, Depends
-from fastapi.middleware.cors import CORSMiddleware  # CORS için
+
+# Import CORSMiddleware to allow the frontend (browser) to communicate with this backend API.
+from fastapi.middleware.cors import CORSMiddleware
+
+# Import BaseModel from Pydantic to define data schemas (validation for inputs and outputs).
 from pydantic import BaseModel
+
+# Import 'List' for type hinting lists of objects.
 from typing import List
+
+# Import 'Session' to type-hint the database session object.
 from sqlalchemy.orm import Session
 
+# Import our custom settings configuration.
 from app.core.config import settings
+
+# Import our database models (tables).
 from . import models
+
+# Import the engine and the session factory we created in database.py.
 from .database import engine, SessionLocal
+
+# Import our AI logic service.
 from .ai_models import llm_service
 
-# database tablolarını oluşturuyor
+# Create all tables in the database defined in 'models.py' if they don't exist yet.
 models.Base.metadata.create_all(bind=engine)
 
-# --- Pydantic Modelleri (API Kontratı) ---
+# --- Pydantic Models (API Contract) ---
+# Define the expected structure of the input data for analysis.
 class AnalysisRequest(BaseModel):
     text_to_analyze: str
-    analysis_level: str = "deep"
+    analysis_level: str = "deep"  # Default value is "deep"
 
+# Define the structure for a single similar patent object.
 class SimilarPatent(BaseModel):
     patent_id: str
     title: str
     similarity_score: float
 
+# Define the structure of the API response sent back to the user.
 class AnalysisResponse(BaseModel):
     analysis_id: str
     status: str
@@ -31,74 +50,87 @@ class AnalysisResponse(BaseModel):
     similar_patents: List[SimilarPatent]
     summary: str
 
-# --- Veritabanı Bağımlılığı ---
+# --- Database Dependency ---
+# This function creates a new database session for each request and closes it afterwards.
 def get_db():
     db = SessionLocal()
     try:
-        yield db
+        yield db  # Provide the session to the path operation function.
     finally:
-        db.close()
+        db.close()  # Ensure the connection is closed after the request is finished.
 
-# --- FastAPI Uygulaması ---
+# --- FastAPI Application Instance ---
+# Initialize the FastAPI app using the project name from our settings.
 app = FastAPI(title=settings.PROJECT_NAME)
 
-# --- bunlar CORS ayarları ---
-# Bu blok, frontend'den (tarayıcıdan) gelen isteklere
-# API'mizin cevap vermesine izin verir.
+# --- CORS Settings ---
+# Define which origins (websites/domains) are allowed to access this API.
 origins = [
-    "*",  # şimdilik tüm adreslere izin veriyor geliştirme için
-    "null" # file:// yani dosyadan açılan html için bu gerekli
+    "*",      # Allow all domains (useful for development, but risky for production).
+    "null"    # Allow local file access (e.g., opening an HTML file directly).
 ]
 
+# Add the CORS middleware to the application to handle browser security restrictions.
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
+    allow_origins=origins,       # List of allowed origins.
+    allow_credentials=True,      # Allow cookies and credentials.
+    allow_methods=["*"],         # Allow all HTTP methods (GET, POST, PUT, DELETE, etc.).
+    allow_headers=["*"],         # Allow all HTTP headers.
 )
-# --- CORS AYARLARI bitti ---
+# --- End of CORS Settings ---
 
 
-# --- API UÇ NOKTALARI ---
+# --- API ENDPOINTS ---
+
+# Define a root endpoint just to check if the API is running.
 @app.get("/")
 def read_root():
-    return {"message": f"{settings.PROJECT_NAME} API'sine hoş geldiniz!"}
+    return {"message": f"Welcome to the {settings.PROJECT_NAME} API!"}
 
 
+# Define the main endpoint for analyzing patent ideas.
+# It expects a POST request, validates input with AnalysisRequest, and returns AnalysisResponse.
 @app.post("/api/analyze", response_model=AnalysisResponse)
 async def analyze_patent_idea(request: AnalysisRequest, db: Session = Depends(get_db)):
     """
-    Patent fikrini alır, YENİ LLM SERVİSİMİZ ile analiz eder,
-    sonucu veritabanına kaydeder ve kullanıcıya döndürür.
+    Receives a patent idea, analyzes it with our NEW LLM SERVICE,
+    saves the result to the database, and returns it to the user.
     """
-    print(f"Analiz için gelen metin: '{request.text_to_analyze}'")
+    
+    # Print the incoming text to the console for debugging.
+    print(f"Text received for analysis: '{request.text_to_analyze}'")
 
-    # 1. YENİ YAPAY ZEKA SERVİSİNİ ÇAĞIR
-    #    Artık mock_response yok!
+    # 1. CALL THE NEW AI SERVICE
+    # No more mock response! We are calling the actual AI logic now.
     analysis_result = llm_service.get_analysis(request.text_to_analyze)
 
-    # 2. VERİTABANINA KAYDET
-    #    Yapay zekadan gelen gerçek sonuçları kaydet
+    # 2. SAVE TO DATABASE
+    # Create a new database record using the real results from the AI.
     db_report = models.AnalysisReport(
         text_to_analyze=request.text_to_analyze,
         novelty_score=analysis_result["novelty_score"],
         summary=analysis_result["summary"]
     )
 
+    # Add the new report object to the database session.
     db.add(db_report)
+    
+    # Commit (save) the transaction to the database.
     db.commit()
+    
+    # Refresh the instance to get the generated ID and other defaults from the DB.
     db.refresh(db_report)
 
-    print(f"Rapor başarıyla veritabanına kaydedildi, ID: {db_report.id}")
+    # Print a confirmation message with the new ID.
+    print(f"Report successfully saved to database, ID: {db_report.id}")
 
-    # 3. KULLANICIYA CEVABI DÖNDÜR
-    #    Cevabı, veritabanından ve AI servisinden gelen
-    #    gerçek verilerle oluştur.
+    # 3. RETURN RESPONSE TO USER
+    # Construct the response object using data from the DB and the AI service.
     return AnalysisResponse(
-        analysis_id=str(db_report.id),  # DB'den gelen gerçek ID
+        analysis_id=str(db_report.id),  # The actual ID generated by the database.
         status="completed",
         novelty_score=analysis_result["novelty_score"],
         summary=analysis_result["summary"],
-        similar_patents=[]  # Benzer patent işini daha yapmadık
+        similar_patents=[]  # We haven't implemented the similar patents list logic in the response yet.
     )
