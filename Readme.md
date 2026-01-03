@@ -1,6 +1,6 @@
 <div id="top">
 
-<div align="center">
+<div align="center">  
 
 <div align="center">
   <img src="https://github.com/user-attachments/assets/51fd7451-e708-4fd2-a70e-caac8746781a" width="300" height="300" alt="WaterTwin AI Dashboard">
@@ -95,7 +95,7 @@ PatentAI
 |  **Density & Gap Analysis** | Identifies crowded and empty technology areas | ✅ Completed |
 |  **Patent Monitoring** | Tracks similar applications after patenting | ✅ Completed |
 |  **Strategic Recommendations** | Technical and market-oriented advice | ✅ Completed |
-|  **Multi-User Reports** | Customized reports for different user types | ✅ Completed |
+|  **Multi-User Reports** |Customized reports for different user types | ✅ Completed |
 
 
     
@@ -185,7 +185,7 @@ Resources used in the initial MVP version:
 -  **`Task 2`**: Data Collection & Modeling Initialization
 -  **`Task 3`**: Flask API & Backend Development
 -  **`Task 4`**: Interface + Reporting (Python-based)
--  **`Task 5`**: Testing, Demo & Presentation
+-  **`Task 5`**:Testing, Demo & Presentation
 
 
 **Technologies:**  
